@@ -17,23 +17,23 @@ export class TodoDataService {
     return this.http.get<Todo[]>(`${API_URL}/users/${username}/todos`);
   }
 
-  // deleteTodo(username, id) {
-  //   return this.http.delete(`${TODO_JPA_API_URL}/users/${username}/todos/${id}`);
-  // }
+  deleteTodo(username, id) {
+    return this.http.delete(`${API_URL}/users/${username}/todos/${id}`);
+  }
 
   retrieveTodo(username, id) {
     return this.http.get<Todo>(`${API_URL}/users/${username}/todos/${id}`);
   }
 
-  // updateTodo(username, id, todo) {
-  //   return this.http.put(
-  //     `${TODO_JPA_API_URL}/users/${username}/todos/${id}`
-  //     , todo);
-  // }
+  updateTodo(username, id, todo) {
+    return this.http.put(
+      `${API_URL}/users/${username}/todos/${id}`
+      , todo);
+  }
 
-  // createTodo(username, todo) {
-  //   return this.http.post(
-  //     `${TODO_JPA_API_URL}/users/${username}/todos`
-  //     , todo);
-  // }
+  createTodo(username, todo) {
+    return this.http.post(
+      `${API_URL}/users/${username}/todos`
+      , todo);
+  }
 }

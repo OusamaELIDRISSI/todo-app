@@ -12,6 +12,7 @@ export class ListTodosComponent implements OnInit {
 
   todos: Todo[];
   name = '';
+  message: string;
 
   constructor(private todoService: TodoDataService, private router: Router) { }
 
@@ -20,30 +21,29 @@ export class ListTodosComponent implements OnInit {
   }
 
   refreshTodos(){
-    this.todoService.retrieveAllTodos('in28minutes').subscribe(
+    this.todoService.retrieveAllTodos('usr').subscribe(
       response => {
         this.todos = response;
       }
     );
   }
 
-  // deleteTodo(id) {
-  //   console.log(`delete todo ${id}` )
-  //   this.todoService.deleteTodo('in28minutes', id).subscribe (
-  //     response => {
-  //       console.log(response);
-  //       this.message = `Delete of Todo ${id} Successful!`;
-  //       this.refreshTodos();
-  //     }
-  //   )
-  // }
+  deleteTodo(id) {
+    console.log(`delete todo ${id}` );
+    this.todoService.deleteTodo('in28minutes', id).subscribe (
+      response => {
+        console.log(response);
+        this.message = `Delete of Todo ${id} Successful!`;
+        this.refreshTodos();
+      }
+    );
+  }
 
-  // updateTodo(id) {
-  //   console.log(`update ${id}`)
-  //   this.router.navigate(['todos',id])
-  // }
+  updateTodo(id) {
+    this.router.navigate(['todos', id]);
+  }
 
-  // addTodo() {
-  //   this.router.navigate(['todos',-1])
-  // }
+  addTodo() {
+    this.router.navigate(['todos', -1]);
+  }
 }

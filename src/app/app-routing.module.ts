@@ -11,9 +11,9 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'todos', component: ListTodosComponent, canActivate:[RouteGuardService]},
-  { path: 'welcome/:name', component: WelcomeComponent, canActivate:[RouteGuardService]},
-  { path: 'logout', component: LogoutComponent, canActivate:[RouteGuardService]},
+  {path: 'todos', component: ListTodosComponent, canActivate: [RouteGuardService]},
+  { path: 'welcome/:name', component: WelcomeComponent, canActivate: [RouteGuardService]},
+  { path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService]},
   {path: '**', component: ErrorComponent}
 ];
 

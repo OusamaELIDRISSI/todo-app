@@ -13,6 +13,7 @@ import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
 import { WelcomeDataService } from './service/data/welcome-data.service';
+import { TodoDataService } from './service/data/todo-data.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { WelcomeDataService } from './service/data/welcome-data.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [WelcomeDataService],
+  providers: [WelcomeDataService, TodoDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

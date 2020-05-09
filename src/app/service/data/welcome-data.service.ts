@@ -14,7 +14,6 @@ export class WelcomeDataService {
   executeHelloWorldBeanService() {
     return this.http.get<HelloWorldBean>('http://localhost:8080/hello-world-bean');
   }
-  //http://localhost:8080/hello-world/path-variable/in28minutes
 
   executeHelloWorldServiceWithPathVariable(name) {
     // let basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();

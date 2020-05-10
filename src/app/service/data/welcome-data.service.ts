@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HelloWorldBean } from 'src/app/model/helloWorldBean.model';
 
 @Injectable({
@@ -28,8 +28,8 @@ export class WelcomeDataService {
   }
 
   // createBasicAuthenticationHttpHeader() {
-  //   let username = 'in28minutes'
-  //   let password = 'dummy'
+  //   let username = 'usr';
+  //   let password = '123';
   //   let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
   //   return basicAuthHeaderString;
   // }

@@ -15,7 +15,7 @@ Password : <input type="password" name="password" [(ngModel)]="password" placeho
             <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required>
         </div>
 
-        <button type="submit" class="btn btn-success" (click)=handleLogin()>Login</button>
+        <button type="submit" class="btn btn-success" (click)=handleBasicAuthLogin()>Login</button>
     </form>
     <br><div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
 </div>

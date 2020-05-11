@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationBean } from '../model/authenticationBean.model';
 import { API_URL } from '../app.constants';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,18 +19,14 @@ export class BasicAuthenticationService {
       Authorization: basicAuthHeaderString
     });
 
-    return this.http.get<AuthenticationBean>(
-      `${API_URL}/basicauth`,
-      { headers }).pipe(
-        map(
-          data => {
-            sessionStorage.setItem('authenticaterUser', username);
-            sessionStorage.setItem('token', basicAuthHeaderString);
-            return data;
-          }
-        )
-      );
-    // console.log("Execute Hello World Bean Service")
+    const myObservable = this.http.get<AuthenticationBean>(`${API_URL}/basicauth`, { headers });
+    return myObservable.pipe(
+      map(
+        data => {
+          sessionStorage.setItem('authenticaterUser', username);
+          sessionStorage.setItem('token', basicAuthHeaderString);
+          return data;
+        }));
   }
 
   getAuthenticatedUser() {

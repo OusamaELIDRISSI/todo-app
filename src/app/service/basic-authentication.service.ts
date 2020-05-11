@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationBean } from '../model/authenticationBean.model';
-import { API_URL } from '../app.constants';
+import { API_URL, AUTHENTICATED_USER, TOKEN } from '../app.constants';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -11,8 +11,23 @@ export class BasicAuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  executeAuthenticationService(username, password) {
+  executeJWTAuthenticationService(username, password) {
+    return this.http.post<any>(
+      `${API_URL}/authenticate`,{
+        username,
+        password
+      }).pipe(
+        map(
+          data => {
+            sessionStorage.setItem(AUTHENTICATED_USER, username);
+            sessionStorage.setItem(TOKEN, `Bearer ${data.token}`);
+            return data;
+          }
+        )
+      );
+  }
 
+  executeAuthenticationService(username, password) {
     const basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
 
     const headers = new HttpHeaders({
@@ -23,8 +38,8 @@ export class BasicAuthenticationService {
     return myObservable.pipe(
       map(
         data => {
-          sessionStorage.setItem('authenticaterUser', username);
-          sessionStorage.setItem('token', basicAuthHeaderString);
+          sessionStorage.setItem(AUTHENTICATED_USER, username);
+          sessionStorage.setItem(TOKEN, basicAuthHeaderString);
           return data;
         }));
   }

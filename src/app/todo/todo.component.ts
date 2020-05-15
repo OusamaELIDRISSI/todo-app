@@ -24,7 +24,7 @@ export class TodoComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
     this.todo = new Todo(this.id, '', false, new Date());
     if (this.id != -1) {
-      this.todoService.retrieveTodo('usr', this.id)
+      this.todoService.retrieveTodo('in28minutes', this.id)
         .subscribe(
           data => this.todo = data
         );

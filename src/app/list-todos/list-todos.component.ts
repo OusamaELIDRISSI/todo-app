@@ -30,7 +30,7 @@ export class ListTodosComponent implements OnInit {
 
   deleteTodo(id) {
     console.log(`delete todo ${id}` );
-    this.todoService.deleteTodo('in28minutes', id).subscribe (
+    this.todoService.deleteTodo('usr', id).subscribe (
       response => {
         console.log(response);
         this.message = `Delete of Todo ${id} Successful!`;
